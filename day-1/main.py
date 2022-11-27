@@ -4,19 +4,28 @@ Author  :benni347:
 
 
 def read_file():
+    """
+    This reads the file.
+    :return: a list of all ints in the given file.
+    """
     filename: str = "input"
-    content = []
-    with open(filename) as f:
+    local_content = []
+    with open(filename, encoding="UTF-8") as f:
         for line in f:
-            content.append(int(line.strip("\n")))
+            local_content.append(int(line.strip("\n")))
         f.close()
 
-    return content
+    return local_content
 
 
 def check_if_increased_part_1(file_content: list):
+    """
+    To solve part 1 of the problem.
+    :param file_content: a list with the numbers of input.
+    :return: the amount of differences.
+    """
     differences = 0
-    for i in range(len(file_content)):
+    for i, _ in enumerate(file_content):
         if i == 0:
             i += 1
         else:
@@ -27,6 +36,11 @@ def check_if_increased_part_1(file_content: list):
 
 
 def three_sum_part_2(file_content: list):
+    """
+    To solve part 2 of the problem.
+    :param file_content: a list with the numbers of input.
+    :return: the amount of differences.
+        """
     previous_sum = file_content[0] + file_content[1] + file_content[2]
     differences = 0
     for i in range(1, len(file_content) - 2, 1):
@@ -39,7 +53,7 @@ def three_sum_part_2(file_content: list):
 
 if __name__ == "__main__":
     content = read_file()
-    # content = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
-    differences_part_1 = check_if_increased_part_1(content)
-    differences_part_2 = three_sum_part_2(content)
-    print(differences_part_2)
+    DIFFERENCES_PART_1 = check_if_increased_part_1(content)
+    DIFFERENCES_PART_2 = three_sum_part_2(content)
+    print(f"Part 1: {DIFFERENCES_PART_1}")
+    print(f"Part 2: {DIFFERENCES_PART_2}")
